@@ -6,25 +6,29 @@ A curated list of resources dedicated to text summarization
 
 ## Table of Contents
 
-* [Corpus](#corpus)
-* [Text Summarization Software](#text-summarization-software)
-* [Word Representations](#word-representations)
-  * [Word Representations for Chinese](#word-representations-for-chinese)
-  * [Evaluation of Word Embeddings](#evaluation-of-word-embeddings)
-  * [Evaluation of Word Embeddings for Chinese](#evaluation-of-word-embeddings-for-chinese)
-* [Sentence Representations](#sentence-representations)
-  * [Evaluation of Sentence Embeddings](#evaluation-of-sentence-embeddings)
-  * [Cross-lingual Sentence Representations](#cross-lingual-sentence-representations)
-  * [Evaluation of Cross-lingual Sentence Representations](#evaluation-of-cross-lingual-sentence-representations)
-* [Language Representations](#language-representations)
-* [Extractive Text Summarization](#extractive-text-summarization)
-* [Abstractive Text Summarization](#abstractive-text-summarization)
-* [Text Summarization](#text-summarization)
-* [Chinese Text Summarization](#chinese-text-summarization)
-* [Program Source Code Summarization](#program-source-code-summarization)
-* [Entity Summarization](#entity-summarization)
-* [Evaluation Metrics](#evaluation-metrics)
-* [Opinion Summarization](#opinion-summarization)
+- [awesome-text-summarization](#awesome-text-summarization)
+  - [Table of Contents](#table-of-contents)
+  - [Contents](#contents)
+    - [Corpus](#corpus)
+    - [Text Summarization Software](#text-summarization-software)
+    - [Word Representations](#word-representations)
+      - [Word Representations for Chinese](#word-representations-for-chinese)
+      - [Evaluation of Word Embeddings](#evaluation-of-word-embeddings)
+      - [Evaluation of Word Embeddings for Chinese](#evaluation-of-word-embeddings-for-chinese)
+    - [Sentence Representations](#sentence-representations)
+      - [Evaluation of Sentence Embeddings](#evaluation-of-sentence-embeddings)
+      - [Cross-lingual Sentence Representations](#cross-lingual-sentence-representations)
+      - [Evaluation of Cross-lingual Sentence Representations](#evaluation-of-cross-lingual-sentence-representations)
+    - [Language Representations](#language-representations)
+      - [Cross-lingual Language Representations](#cross-lingual-language-representations)
+    - [Extractive Text Summarization](#extractive-text-summarization)
+    - [Abstractive Text Summarization](#abstractive-text-summarization)
+    - [Text Summarization](#text-summarization)
+    - [Chinese Text Summarization](#chinese-text-summarization)
+    - [Program Source Code Summarization](#program-source-code-summarization)
+    - [Entity Summarization](#entity-summarization)
+    - [Evaluation Metrics](#evaluation-metrics)
+    - [Opinion Summarization](#opinion-summarization)
 
 ## Contents
 
@@ -163,30 +167,34 @@ this link is to so a section on natural language texts summarization.
    * Distributed Memory Model of Paragraph Vectors (PV-DM): The inspiration is that the paragraph vectors are asked to contribute to the prediction task of the next word given many contexts sampled from the paragraph.  The paragraph vector and word vectors are averaged or concatenated to predict the next word in a context. The contexts are fixed-length and sampled from a sliding window over the paragraph. The paragraph vector is shared across all contexts generated from the same paragraph but not across paragraphs. However, the word vector matrix is shared across paragraphs. The downside is at prediction time, inference needs to be performed to compute a new vector.
    * Distributed Bag of Words version of Paragraph Vector (PV-DBOW): This modle is to ignore the context words in the input, but force the model to predict words randomly sampled from the paragraph in the output.
 3. Yoon Kim. [Convolutional neural networks for sentence classification](http://arxiv.org/abs/1408.5882). arXiv:1408.5882, EMNLP 2014.
-1. Ryan Kiros, Yukun Zhu, Ruslan Salakhutdinov, Richard S. Zemel, Antonio Torralba, Raquel Urtasun and Sanja Fidler. [Skip-Thought Vectors](https://arxiv.org/abs/1506.06726). arXiv:1506.06726, 2015. The source code in Python is [skip-thoughts](https://github.com/ryankiros/skip-thoughts). The TensorFlow implementation of *Skip-Thought Vectors* is [skip_thoughts](https://github.com/tensorflow/models/tree/master/research/skip_thoughts)
+4. Ryan Kiros, Yukun Zhu, Ruslan Salakhutdinov, Richard S. Zemel, Antonio Torralba, Raquel Urtasun and Sanja Fidler. [Skip-Thought Vectors](https://arxiv.org/abs/1506.06726). arXiv:1506.06726, 2015. The source code in Python is [skip-thoughts](https://github.com/ryankiros/skip-thoughts). The TensorFlow implementation of *Skip-Thought Vectors* is [skip_thoughts](https://github.com/tensorflow/models/tree/master/research/skip_thoughts)
    * Instead of using a word to predict its surrounding context, they instead encode a sentence to predict the sentences around it. The skip-thoughts is in the framework of encoder-decoder models: an encoder maps words to a sentence vector and a decoder is used to generate the surrounding sentences.
    * The end product of skip-thoughts is the encoder,  which can then be used to generate fixed length representations of sentences. The decoders are thrown away after training.
    * A good tutorial to this paper is [My Thoughts On Skip Thoughts](http://sanyam5.github.io/my-thoughts-on-skip-thoughts/).
-2. Andrew M. Dai, Quoc V. Le. [Semi-supervised Sequence Learning](https://arxiv.org/abs/1511.01432). arXiv:1511.01432, 2015.
-   * They present two approaches that use unlabeled data to improve sequence learning with recurrent networks. The first approach is to predict what comes next in a sequence, which is a conventional language model in natural language processing. The second approach is to use a sequence autoencoder, which reads the input sequence into a vector and predicts the input sequence again. These two algorithms can be used as a "pretraining" step for a later supervised sequence learning algorithm.
-   * Their semi-supervised learning approach is related to Skip-Thought vectors with two differences. The first difference is that Skip-Thought is a harder objective, because it predicts adjacent sentences. The second is that Skip-Thought is a pure unsupervised learning algorithm, without fine-tuning.
-2. John Wieting and Mohit Bansal and Kevin Gimpel and Karen Livescu. [Towards Universal Paraphrastic Sentence Embeddings](https://arxiv.org/abs/1511.08198). arXiv:1511.08198, ICLR 2016. The source code written in Python is [iclr2016](https://github.com/jwieting/iclr2016).
-2. Zhe Gan, Yunchen Pu, Ricardo Henao, Chunyuan Li, Xiaodong He, Lawrence Carin. [Learning Generic Sentence Representations Using Convolutional Neural Networks](https://arxiv.org/abs/1611.07897). arXiv:1611.07897, EMNLP 2017. The training code written in Python is [ConvSent](https://github.com/zhegan27/ConvSent).
-3. Matteo Pagliardini, Prakhar Gupta, Martin Jaggi. [Unsupervised Learning of Sentence Embeddings using Compositional n-Gram Features](https://arxiv.org/abs/1703.02507v2). arXiv:1703.02507, NAACL 2018. The source code in Python is [sent2vec](https://github.com/epfml/sent2vec). 
-4. Zhouhan Lin, Minwei Feng, Cicero Nogueira dos Santos, Mo Yu, Bing Xiang, Bowen Zhou, Yoshua Bengio. [A Structured Self-attentive Sentence Embedding](https://arxiv.org/abs/1703.03130). arXiv:1703.03130, ICLR 2017.
-1. Ledell Wu, Adam Fisch, Sumit Chopra, Keith Adams, Antoine Bordes, Jason Weston. [StarSpace: Embed All The Things](https://arxiv.org/abs/1709.03856v5). arXiv:1709.03856v5, 2017. The source code in C++11 is [StarSpace](https://github.com/facebookresearch/Starspace/).
-2. Alexis Conneau, Douwe Kiela, Holger Schwenk, Loic Barrault, Antoine Bordes. [Supervised Learning of Universal Sentence Representations from Natural Language Inference Data](https://arxiv.org/abs/1705.02364v5). arXiv:1705.02364v5, EMNLP 2017. The source code in Python is [InferSent](https://github.com/facebookresearch/InferSent).
-3. Sanjeev Arora, Yingyu Liang, Tengyu Ma. [A Simple but Tough-to-Beat Baseline for Sentence Embeddings](https://openreview.net/pdf?id=SyK00v5xx). ICLR 2017. The source code written in Python is [SIF](https://github.com/PrincetonML/SIF). [SIF_mini_demo](https://github.com/PrincetonML/SIF_mini_demo) is a minimum example for the sentence embedding algorithm. [sentence2vec](https://github.com/peter3125/sentence2vec) is another implementation.
-   * A weighted average of words by their distance from the first principal component of a sentence is proposed, which  yields a remarkably robust approximate sentence vector embedding.
-   * However, this “smooth inverse frequency” approach comes with limitations. Not only is calculating PCA for every sentence in a document computationally complex, but the first principal component of a small number of normally distributed words in a high dimensional space is subject to random fluctuation. Their calculation of word frequencies from the unigram count of the word in the corpus also means that their approach still does not work for out-of-vocab words, has no equivalent in other vector spaces and can’t be generated from the word vectors alone.
-1. Yixin Nie, Mohit Bansal. [Shortcut-Stacked Sentence Encoders for Multi-Domain Inference](https://arxiv.org/abs/1708.02312). arXiv:1708.02312, EMNLP 2017. The source code in Python is [multiNLI_encoder](https://github.com/easonnie/multiNLI_encoder). The new repo [ResEncoder]( https://github.com/easonnie/ResEncoder) is for Residual-connected sentence encoder for NLI.
-2. Allen Nie, Erin D. Bennett, Noah D. Goodman. [DisSent: Sentence Representation Learning from Explicit Discourse Relations](https://arxiv.org/abs/1710.04334v2). arXiv:1710.04334v2, 2018.
-3. Andreas Rücklé, Steffen Eger, Maxime Peyrard, Iryna Gurevych. [Concatenated Power Mean Word Embeddings as Universal Cross-Lingual Sentence Representations](https://arxiv.org/abs/1803.01400v2).  arXiv:1803.01400v2, 2018. The source code written in Python is [arxiv2018-xling-sentence-embeddings](https://github.com/UKPLab/arxiv2018-xling-sentence-embeddings).
-2. Lajanugen Logeswaran, Honglak Lee. [An efficient framework for learning sentence representations](https://arxiv.org/abs/1803.02893). arXiv:1803.02893, ICLR 2018. The open review comments are listed [here](https://openreview.net/forum?id=rJvJXZb0W).
-3. Eric Zelikman. [Context is Everything: Finding Meaning Statistically in Semantic Spaces](https://arxiv.org/abs/1803.08493). arXiv:1803.08493, 2018.
-1. Daniel Cer, Yinfei Yang, Sheng-yi Kong, Nan Hua, Nicole Limtiaco, Rhomni St. John, Noah Constant, Mario Guajardo-Cespedes, Steve Yuan, Chris Tar, Yun-Hsuan Sung, Brian Strope, Ray Kurzweil. [Universal Sentence Encoder](https://arxiv.org/abs/1803.11175v2). arXiv:1803.11175v2, 2018.
-2. Sandeep Subramanian, Adam Trischler, Yoshua Bengio, Christopher J Pal. [Learning General Purpose Distributed Sentence Representations via Large Scale Multi-task Learning](https://arxiv.org/abs/1804.00079). arXiv:1804.00079, ICLR 2018.
-3. Reimers, Nils and Gurevych, Iryna. [sentence-transformers](https://github.com/UKPLab/sentence-transformers)  - Sentence Transformers: Multilingual Sentence Embeddings using BERT / RoBERTa / XLM-RoBERTa & Co. with PyTorch
+5. Andrew M. Dai, Quoc V. Le. [Semi-supervised Sequence Learning](https://arxiv.org/abs/1511.01432). arXiv:1511.01432, 2015.
+   - They present two approaches that use unlabeled data to improve sequence learning with recurrent networks. The first approach is to predict what comes next in a sequence, which is a conventional language model in natural language processing. The second approach is to use a sequence autoencoder, which reads the input sequence into a vector and predicts the input sequence again. These two algorithms can be used as a "pretraining" step for a later supervised sequence learning algorithm.
+   - Their semi-supervised learning approach is related to Skip-Thought vectors with two differences. The first difference is that Skip-Thought is a harder objective, because it predicts adjacent sentences. The second is that Skip-Thought is a pure unsupervised learning algorithm, without fine-tuning.
+6. John Wieting and Mohit Bansal and Kevin Gimpel and Karen Livescu. [Towards Universal Paraphrastic Sentence Embeddings](https://arxiv.org/abs/1511.08198). arXiv:1511.08198, ICLR 2016. The source code written in Python is [iclr2016](https://github.com/jwieting/iclr2016).
+7. Zhe Gan, Yunchen Pu, Ricardo Henao, Chunyuan Li, Xiaodong He, Lawrence Carin. [Learning Generic Sentence Representations Using Convolutional Neural Networks](https://arxiv.org/abs/1611.07897). arXiv:1611.07897, EMNLP 2017. The training code written in Python is [ConvSent](https://github.com/zhegan27/ConvSent).
+8. Matteo Pagliardini, Prakhar Gupta, Martin Jaggi. [Unsupervised Learning of Sentence Embeddings using Compositional n-Gram Features](https://arxiv.org/abs/1703.02507v2). arXiv:1703.02507, NAACL 2018. The source code in Python is [sent2vec](https://github.com/epfml/sent2vec). 
+9. Zhouhan Lin, Minwei Feng, Cicero Nogueira dos Santos, Mo Yu, Bing Xiang, Bowen Zhou, Yoshua Bengio. [A Structured Self-attentive Sentence Embedding](https://arxiv.org/abs/1703.03130). arXiv:1703.03130, ICLR 2017.
+10. Ledell Wu, Adam Fisch, Sumit Chopra, Keith Adams, Antoine Bordes, Jason Weston. [StarSpace: Embed All The Things](https://arxiv.org/abs/1709.03856v5). arXiv:1709.03856v5, 2017. The source code in C++11 is [StarSpace](https://github.com/facebookresearch/Starspace/).
+11. Alexis Conneau, Douwe Kiela, Holger Schwenk, Loic Barrault, Antoine Bordes. [Supervised Learning of Universal Sentence Representations from Natural Language Inference Data](https://arxiv.org/abs/1705.02364v5). arXiv:1705.02364v5, EMNLP 2017. The source code in Python is [InferSent](https://github.com/facebookresearch/InferSent).
+12. Sanjeev Arora, Yingyu Liang, Tengyu Ma. [A Simple but Tough-to-Beat Baseline for Sentence Embeddings](https://openreview.net/pdf?id=SyK00v5xx). ICLR 2017. The source code written in Python is [SIF](https://github.com/PrincetonML/SIF). [SIF_mini_demo](https://github.com/PrincetonML/SIF_mini_demo) is a minimum example for the sentence embedding algorithm. [sentence2vec](https://github.com/peter3125/sentence2vec) is another implementation.
+    - A weighted average of words by their distance from the first principal component of a sentence is proposed, which  yields a remarkably robust approximate sentence vector embedding.
+    - However, this “smooth inverse frequency” approach comes with limitations. Not only is calculating PCA for every sentence in a document computationally complex, but the first principal component of a small number of normally distributed words in a high dimensional space is subject to random fluctuation. Their calculation of word frequencies from the unigram count of the word in the corpus also means that their approach still does not work for out-of-vocab words, has no equivalent in other vector spaces and can’t be generated from the word vectors alone.
+13. Yixin Nie, Mohit Bansal. [Shortcut-Stacked Sentence Encoders for Multi-Domain Inference](https://arxiv.org/abs/1708.02312). arXiv:1708.02312, EMNLP 2017. The source code in Python is [multiNLI_encoder](https://github.com/easonnie/multiNLI_encoder). The new repo [ResEncoder]( https://github.com/easonnie/ResEncoder) is for Residual-connected sentence encoder for NLI.
+14. Allen Nie, Erin D. Bennett, Noah D. Goodman. [DisSent: Sentence Representation Learning from Explicit Discourse Relations](https://arxiv.org/abs/1710.04334v2). arXiv:1710.04334v2, 2018.
+15. Andreas Rücklé, Steffen Eger, Maxime Peyrard, Iryna Gurevych. [Concatenated Power Mean Word Embeddings as Universal Cross-Lingual Sentence Representations](https://arxiv.org/abs/1803.01400v2).  arXiv:1803.01400v2, 2018. The source code written in Python is [arxiv2018-xling-sentence-embeddings](https://github.com/UKPLab/arxiv2018-xling-sentence-embeddings).
+16. Lajanugen Logeswaran, Honglak Lee. [An efficient framework for learning sentence representations](https://arxiv.org/abs/1803.02893). arXiv:1803.02893, ICLR 2018. The open review comments are listed [here](https://openreview.net/forum?id=rJvJXZb0W).
+17. Eric Zelikman. [Context is Everything: Finding Meaning Statistically in Semantic Spaces](https://arxiv.org/abs/1803.08493). arXiv:1803.08493, 2018.
+18. Daniel Cer, Yinfei Yang, Sheng-yi Kong, Nan Hua, Nicole Limtiaco, Rhomni St. John, Noah Constant, Mario Guajardo-Cespedes, Steve Yuan, Chris Tar, Yun-Hsuan Sung, Brian Strope, Ray Kurzweil. [Universal Sentence Encoder](https://arxiv.org/abs/1803.11175v2). arXiv:1803.11175v2, 2018.
+19. Sandeep Subramanian, Adam Trischler, Yoshua Bengio, Christopher J Pal. [Learning General Purpose Distributed Sentence Representations via Large Scale Multi-task Learning](https://arxiv.org/abs/1804.00079). arXiv:1804.00079, ICLR 2018.
+20. Nils Reimers, Iryna Gurevych. [Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks](https://arxiv.org/abs/1908.10084v1). arXiv:1908.10084v1, EMNLP 2019. This publication has been integrated into the framework [sentence-transformers](https://github.com/UKPLab/sentence-transformers), which provides an easy method to compute dense vector representations for sentences, paragraphs, and images.
+21. Yan Zhang, Ruidan He, Zuozhu Liu, Kwan Hui Lim, Lidong Bing. [An Unsupervised Sentence Embedding Method by Mutual Information Maximization](https://arxiv.org/abs/2009.12061v2). arXiv:2009.12061v2, EMNLP 2020. 
+22. Bohan Li, Hao Zhou, Junxian He, Mingxuan Wang, Yiming Yang, Lei Li. [On the Sentence Embeddings from Pre-trained Language Models](https://arxiv.org/abs/2011.05864v1). arXiv:2011.05864v1. The code is available at [BERT-flow](https://github.com/bohanli/BERT-flow). [IS-BERT](https://github.com/yanzhangnlp/IS-BERT) contains the code.
+23. Tianyu Gao, Xingcheng Yao, Danqi Chen. [SimCSE: Simple Contrastive Learning of Sentence Embeddings](https://arxiv.org/abs/2104.08821v1). arXiv:2104.08821v1. [SimCSE](https://github.com/princeton-nlp/SimCSE) contains the code and pre-trained models for this model.
+24. Kexin Wang, Nils Reimers, Iryna Gurevych. [TSDAE: Using Transformer-based Sequential Denoising Auto-Encoder for Unsupervised Sentence Embedding Learning](https://arxiv.org/abs/2104.06979v1). arXiv:2104.06979v1.
 
 #### Evaluation of Sentence Embeddings
 
@@ -200,18 +208,16 @@ this link is to so a section on natural language texts summarization.
 #### Cross-lingual Sentence Representations
 
 1. [LASER](https://github.com/facebookresearch/LASER) is a library to calculate multilingual sentence embeddings:
-   * Holger Schwenk and Matthijs Douze. [Learning Joint Multilingual Sentence Representations with Neural Machine Translation](https://aclanthology.info/papers/W17-2619/w17-2619). ACL workshop on Representation Learning for NLP, 2017.
-   * Holger Schwenk and Xian Li. [A Corpus for Multilingual Document Classification in Eight Languages](http://www.lrec-conf.org/proceedings/lrec2018/pdf/658.pdf).  LREC, 2018.
-   * Holger Schwenk. [Filtering and Mining Parallel Data in a Joint Multilingual Space](https://arxiv.org/abs/1805.09822). arXiv:1805.09822, ACL, 2018.
-   * Mikel Artetxe, Holger Schwenk. [Margin-based Parallel Corpus Mining with Multilingual Sentence Embeddings](https://arxiv.org/abs/1811.01136). arXiv:1811.01136, 2018.
-   * Mikel Artetxe, Holger Schwenk. [Massively Multilingual Sentence Embeddings for Zero-Shot Cross-Lingual Transfer and Beyond](https://arxiv.org/abs/1812.10464). arXiv:1812.10464, 2018.
+   - Holger Schwenk and Matthijs Douze. [Learning Joint Multilingual Sentence Representations with Neural Machine Translation](https://aclanthology.info/papers/W17-2619/w17-2619). ACL workshop on Representation Learning for NLP, 2017.
+   - Holger Schwenk and Xian Li. [A Corpus for Multilingual Document Classification in Eight Languages](http://www.lrec-conf.org/proceedings/lrec2018/pdf/658.pdf).  LREC, 2018.
+   - Holger Schwenk. [Filtering and Mining Parallel Data in a Joint Multilingual Space](https://arxiv.org/abs/1805.09822). arXiv:1805.09822, ACL, 2018.
+   - Mikel Artetxe, Holger Schwenk. [Margin-based Parallel Corpus Mining with Multilingual Sentence Embeddings](https://arxiv.org/abs/1811.01136). arXiv:1811.01136, 2018.
+   - Mikel Artetxe, Holger Schwenk. [Massively Multilingual Sentence Embeddings for Zero-Shot Cross-Lingual Transfer and Beyond](https://arxiv.org/abs/1812.10464). arXiv:1812.10464, 2018.
      - They learn a single, language agnostic BiLSTM shared encoder that can handle 93 different languages, which is coupled with an auxiliary decoder and trained over parallel corpora.
-
 
 #### Evaluation of Cross-lingual Sentence Representations
 
 1. Alexis Conneau, Guillaume Lample, Ruty Rinott, Adina Williams, Samuel R. Bowman, Holger Schwenk, Veselin Stoyanov. [XNLI: Evaluating Cross-lingual Sentence Representations](https://arxiv.org/abs/1809.05053). arXiv:1809.05053, EMNLP 2018.
-
 
 ### Language Representations
 
